@@ -1,7 +1,7 @@
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
-import { createRoot } from "react-dom/client";
+import { createRoot, Root } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -22,26 +22,11 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/check-in" element={<CheckIn />} />
-          <Route
-            path="/regras"
-            element={<Placeholder title="Regras da casa" />}
-          />
-          <Route
-            path="/como-chegar"
-            element={<Placeholder title="Como chegar" />}
-          />
-          <Route
-            path="/guias"
-            element={<Placeholder title="Guias da região" />}
-          />
-          <Route
-            path="/delivery"
-            element={<Placeholder title="Delivery de comida" />}
-          />
-          <Route
-            path="/check-out"
-            element={<Placeholder title="Como fazer check-out" />}
-          />
+          <Route path="/regras" element={<Placeholder title="Regras da casa" />} />
+          <Route path="/como-chegar" element={<Placeholder title="Como chegar" />} />
+          <Route path="/guias" element={<Placeholder title="Guias da região" />} />
+          <Route path="/delivery" element={<Placeholder title="Delivery de comida" />} />
+          <Route path="/check-out" element={<Placeholder title="Como fazer check-out" />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
@@ -49,4 +34,20 @@ const App = () => (
   </QueryClientProvider>
 );
 
-createRoot(document.getElementById("root")!).render(<App />);
+const container = document.getElementById("root");
+
+if (!container) {
+  throw new Error("Root element with id 'root' was not found");
+}
+
+interface GlobalWithRoot {
+  __appRoot?: Root;
+}
+
+const globalWithRoot = globalThis as typeof globalThis & GlobalWithRoot;
+
+const root = globalWithRoot.__appRoot ?? createRoot(container);
+
+globalWithRoot.__appRoot = root;
+
+root.render(<App />);
