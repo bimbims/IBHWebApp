@@ -48,11 +48,11 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         // Ibirahill brand colors
-        'ibira-dark': 'hsl(var(--ibira-dark))',
-        'ibira-green': 'hsl(var(--ibira-green))',
-        'ibira-cream': 'hsl(var(--ibira-cream))',
-        'ibira-beige': 'hsl(var(--ibira-beige))',
-        'ibira-orange': 'hsl(var(--ibira-orange))',
+        "ibira-dark": "hsl(var(--ibira-dark))",
+        "ibira-green": "hsl(var(--ibira-green))",
+        "ibira-cream": "hsl(var(--ibira-cream))",
+        "ibira-beige": "hsl(var(--ibira-beige))",
+        "ibira-orange": "hsl(var(--ibira-orange))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -60,8 +60,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        'abril': ['"Abril Fatface"', 'serif'],
-        'avenir': ['"Avenir Next Condensed"', 'sans-serif'],
+        abril: ['"Abril Fatface"', "serif"],
+        avenir: ['"Avenir Next Condensed"', "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
